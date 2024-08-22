@@ -1,0 +1,36 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+\newcommand{\up}[1]{\raisebox{1.5ex}[0pt]{#1}}
+
+\chapter{Conclusão}
+\label{chap:conclusao}
+
+ Neste trabalho estudamos o aprendizado de W-operadores multicamadas nos contextos de transformação e classificação de imagens. Na Seção \ref{sec:resumo_conclusao}, mostramos as principais contribuições deste trabalho. Na Seção \ref{sec:futuro}, propomos ideias e sugestões para melhoria e continuidade da pesquisa realizada neste trabalho.
+
+\section{Resumo das Principais Contribuições}
+\label{sec:resumo_conclusao}
+
+Esta dissertação apresentou diversas contribuições significativas para o campo da Morfologia Matemática e o aprendizado de W-operadores multicamadas. As principais contribuições deste trabalho são as seguintes:
+
+\begin{enumerate}
+    \item \textbf{Desenvolvimento do Algoritmo descendente no reticulado para o Aprendizado de W-Operadores Multicamadas:} Implementamos um algoritmo descendente no reticulado inovador que percorre um Learning Space Booleano, possibilitando o aprendizado simultâneo das janelas e funções características de W-operadores multicamadas. Esse avanço contribui para a teoria do aprendizado de composições de W-operadores, oferecendo uma abordagem eficiente e robusta para a filtragem e classificação de imagens binárias.
+
+    \item \textbf{Integração de Técnicas de Vetorização de dados em GPU e Exploração Estocástica:} O algoritmo desenvolvido incorporou técnicas de vetorização de dados em GPU e exploração estocástica das cadeias do reticulado Booleano, melhorando significativamente a eficiência computacional e a capacidade de aprendizado do modelo em cenários complexos.
+
+    \item \textbf{Aplicação a Problemas Reais de Transformação e Classificação de Imagens:} Demonstramos a eficácia do algoritmo proposto ao aplicá-lo a três problemas distintos: a filtragem de imagens binárias, o aprendizado da função de transição do \textit{Conway's Game of Life}, e a classificação de dígitos manuscritos utilizando o dataset MNIST. Esses experimentos validaram a aplicabilidade e a robustez do método em diferentes contextos de processamento de imagens.
+
+    \item \textbf{Contribuição para a Interpretação e Consistência Lógica de Modelos:} Diferentemente de muitos métodos modernos baseados em redes neurais, as hipóteses representadas por W-operadores multicamadas no nosso modelo são altamente interpretáveis e logicamente consistentes. Isso permite uma melhor compreensão das propriedades dos operadores aprendidos, promovendo a transparência e a confiabilidade do processo de aprendizado.
+\end{enumerate}
+
+Essas contribuições não apenas avançam o estado da arte na área de Morfologia Matemática, mas também abrem novas possibilidades para o desenvolvimento de algoritmos de aprendizado mais eficientes e interpretáveis em diversas aplicações práticas.
+
+\section{Perspectivas Futuras}
+\label{sec:futuro}
+
+Durante a realização dos experimentos, um dos principais desafios enfrentados foi a limitação de memória na GPU, especialmente durante o aprendizado da função característica onde vetorizamos o cálculo do erro de todos os vizinhos de distância 1 do nó atual com a aplicação de todos os W-operadores de todas as camadas em todas as imagens do \textit{batch}. No experimento mais complexo, utilizando o dataset MNIST com 7 camadas 5x5, foi necessário remover a vetorização das camadas devido à incapacidade da GPU de calcular todos os vizinhos de todas as camadas simultaneamente. Essa limitação comprometeu drasticamente o desempenho em termos de tempo, o que impactou a eficiência do algoritmo na exploração de caminhos no reticulado Booleano.
+
+Para superar esse desafio, futuras pesquisas podem focar na otimização do uso de memória e/ou na utilização de múltiplas GPUs em paralelo, o que poderia reduzir significativamente o tempo de execução e permitir a exploração de mais caminhos no reticulado, especialmente em experimentos de alta complexidade como o do MNIST. 
+
+Outra possível melhoria seria a paralelização do cálculo dos vizinhos de cada janela. Dado que os cálculos dos vizinhos são independentes entre si, essa abordagem permitiria realizar essas operações simultaneamente, com a tomada de decisão sobre qual vizinho saltar sendo feita apenas após todos os resultados estarem disponíveis. Essas melhorias representam potenciais evoluções do trabalho desenvolvido nesta dissertação e abrem caminho para futuras investigações nesse campo.

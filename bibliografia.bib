@@ -1,0 +1,326 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% INSERINDO COMENTÁRIOS EM ARQUIVOS .bib %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% 1. Como em outros arquivos LaTeX, comentários são iniciados por "%" e,
+%    portanto, é preciso usar "\%" para imprimir o caractere "%". Esquecer
+%    disso pode gerar erros difíceis de encontrar!
+%
+% 2. Não é possível inserir comentários dentro de uma entrada, apenas fora.
+%
+% 3. Não é possível incluir o caractere arroba em um comentário.
+%
+% 4. Se quiser desabilitar temporariamente um campo ("comentar" o campo),
+%    troque seu nome para algum nome inválido, como "author-disable".
+%    Se quiser fazer alguma observação permanente dentro de uma entrada,
+%    você também pode usar algum nome de campo inválido, como "lembrete",
+%    ou usar o campo "annotation", que normalmente é ignorado.
+%
+% 5. Se quiser desabilitar temporariamente uma entrada inteira ("comentar" a
+%    entrada), não basta colocar "%" nas linhas correspondentes por causa do
+%    caractere arroba; também é preciso remover a arroba.
+%
+% 6. Na verdade, as regras não são bem essas, mas segui-las é uma boa ideia:
+%    https://tex.stackexchange.com/a/262282
+%
+% Por exemplo, esta entrada está comentada, ou seja, não tem efeito: se
+% houvesse uma referência a ela no texto, a referência ficaria inválida.
+% Observe que, para isso, o caractere arroba foi apagado!
+%
+%Book{JW82,
+% author    = {Richard A. Johnson and Dean W. Wichern},
+% title     = {Applied Multivariate Statistical Analysis},
+% publisher = {Prentice-Hall},
+% year      = {1983}
+%}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% O CAMPO "MONTH" %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% biblatex prefere o uso do campo "date" para definir ano, mês etc. No
+% entanto, se você quiser garantir compatibilidade tanto com biblatex
+% quanto com bibtex, use os campos "year" e "month". Ambos reconhecem
+% diversos formatos para o campo "month", mas apenas um funciona
+% corretamente com os dois: o nome do mês em inglês, abreviado com três
+% letras minúsculas e sem chaves, ou seja:
+%
+% ...
+% author = {Somebody},
+% year = {2011},
+% month = oct,
+% title = {Some title},
+% ...
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Esta entrada não está em uso em tese.tex, apenas em
+% apresentacao.tex, mas isso não é um problema: você pode
+% ter um banco de dados com todos os papers que são de seu
+% interesse e, em um dado texto, citar apenas alguns deles.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@Article{BARRERA:01,
+ title       = {Automatic programming of binary morphological machines by design of statistically optimal operators in the context of computational learning theory},
+ author      = {Junior Barrera and Edward R. Dougherty and Nina Sumiko Tomita},
+ journal     = {Journal of Electronic Imaging},
+ month       = jan,
+ year        = {1997},
+ url         = {https://doi.org/10.1117/12.260010}
+}
+
+@Article{BARRERA:02,
+ title       = {From Mathematical Morphology to machine learning of image operators},
+ author      = {Junior Barrera and Ronaldo F. Hashimoto and Nina S. T. Hirata and R. Hirata Jr. and Marcelo S. Reis},
+ journal     = {Journal of Mathematical Sciences},
+ month       = mar,
+ year        = {2022},
+ url         = {https://doi.org/10.1007/s40863-022-00303-1}
+}
+
+@Article{BARRERA:03,
+ title       = {Decomposition of mappings between complete lattices by mathematical morphology, Part I. General lattices},
+ author      = {Gerald Jean F. Banon and Junior Barrera},
+ journal     = {Signal Processing, 30:299-327},
+ year        = {1993},
+ month       = feb,
+ url         = {https://www.sciencedirect.com/science/article/pii/0165168493900153}
+}
+
+@Book{BARRERA:04,
+ author   = {Gerald Jean F. Banon and Junior Barrera},
+ title    = {Bases da Morfologia Matemática para Análise de Imagens Binárias},
+ edition  = 2,
+ publisher= {IX Escola de Computação},
+ adress   = {Pernambuco, Brasil},
+ month    = jul,
+ year     = {1994}
+}
+
+@MastersThesis{NINA:01,
+ author   = {Nina S. Tomita},
+ title    = {Programação Automática de Máquinas Morfológicas Binárias baseada em Aprendizado PAC},
+ school   = {Instituto de Matemática e Estatística, Universidade de São Paulo},
+ address  = {São Paulo, Brasil},
+ year     = {1996},
+ month    = fev
+}
+
+@PhdThesis{DIEGO:01,
+ author   = {Diego Ribeiro Marcondes},
+ title    = {A Data-driven Systematic, Consistent and Non-exhaustive Approach to Model Selection},
+ school   = {Instituto de Matemática e Estatística, Universidade de São Paulo},
+ address  = {São Paulo, Brasil},
+ year     = {2022},
+ month    = jul
+}
+
+@PhdThesis{NINA:02,
+ author   = {Nina S. Tomita Hirata},
+ title    = {Projeto Automático de Operadores: Explorando Conhecimentos a Priori},
+ school   = {Instituto de Matemática e Estatística, Universidade de São Paulo},
+ address  = {São Paulo, Brasil},
+ year     = {2000},
+ month    = oct
+}
+
+@online{MNIST:dataset,
+ author   = {Yann LeCun and Corinna Cortes and Christopher J.C. Burges},
+ title    = {THE MNIST DATABASE of handwritten digits},
+ year     = {2010},
+ month    = may,
+ urldate  = {2023-04-16},
+ url      = {http://yann.lecun.com/exdb/mnist/},
+}
+
+@Inbook{Barrera1996,
+author="Barrera, A. Junior
+and Salas, B. Guillermo Pablo
+and Hashimoto, C. Ronaldo Fumio",
+editor="Maragos, Petros
+and Schafer, Ronald W.
+and Butt, Muhammad Akmal",
+title="Set Operations on Closed Intervals and their Applications to the Automatic Programming of MMach's",
+bookTitle="Mathematical Morphology and its Applications to Image and Signal Processing",
+year="1996",
+publisher="Springer US",
+address="Boston, MA",
+pages="377--384",
+abstract="Recently much research effort has been addressed to the automatic programming of Binary Morphological Machines (MMach's). A very promising approach to this problem is the description of the target operator by input-output pairs of images and the translation of these data into efficient MMach programs. This approach can be decomposed in two equally important steps: i --- learning of the target operator from pairs of images; ii --- search of economical representations for the operators learned. The theory presented in this paper is useful for both steps of this procedure.We will present some set operations on closed intervals and give efficient algorithms to perform them. These operations will be used to parallelize MMach programs and to prove the equivalence between distinct MMach programs.",
+isbn="978-1-4613-0469-2",
+doi="10.1007/978-1-4613-0469-2_44",
+url="https://doi.org/10.1007/978-1-4613-0469-2_44"
+}
+
+@ARTICLE{ucurve:01,
+  author={Hughes, G.},
+  journal={IEEE Transactions on Information Theory}, 
+  title={On the mean accuracy of statistical pattern recognizers}, 
+  year={1968},
+  volume={14},
+  number={1},
+  pages={55-63},
+  doi={10.1109/TIT.1968.1054102}}
+
+@ARTICLE{ucurve:02,
+  author={Jain, A.K. and Duin, R.P.W. and Jianchang Mao},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Statistical pattern recognition: a review}, 
+  year={2000},
+  volume={22},
+  number={1},
+  pages={4-37},
+  doi={10.1109/34.824819}}
+
+@Book{ucurve:03,
+ author   = {Geoffrey J McLachlan},
+ title    = {Discriminant analysis and statistical pattern recognition},
+ publisher= {John Wiley \& Sons},
+ year     = {2005}
+}
+
+@ARTICLE{ucurve:04,
+  author={Raudys, Sarunas and Pikelis, Vitalijus},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={On Dimensionality, Sample Size, Classification Error, and Complexity of Classification Algorithm in Pattern Recognition}, 
+  year={1980},
+  volume={PAMI-2},
+  number={3},
+  pages={242-252},
+  doi={10.1109/TPAMI.1980.4767011}}
+
+@ARTICLE{ucurve:05,
+  author={Raudys, S.J. and Jain, A.K.},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Small sample size effects in statistical pattern recognition: recommendations for practitioners}, 
+  year={1991},
+  volume={13},
+  number={3},
+  pages={252-264},
+  doi={10.1109/34.75512}}
+
+@ARTICLE{ucurve:06,
+  author={Amin Zollanvari, Alex Pappachen James, and Reza Sameni},
+  journal={Journal of Classification}, 
+  title={A theoretical analysis of the peaking phenomenon in classification}, 
+  year={2020},
+  volume={37},
+  number={2},
+  pages={421-434},
+  doi={10.1007/s00357-019-09327-3}}
+
+@book{imageprocessing,
+  title={DIGITAL IMAGE PROCESSING},
+  isbn={9781259081439},
+  url={https://books.google.com.br/books?id=ttNuj2mmt4sC},
+  publisher={Tata McGraw-Hill Education}
+}
+
+@article{stochastit:01,
+author = {Herbert Robbins and Sutton Monro},
+title = {{A Stochastic Approximation Method}},
+volume = {22},
+journal = {The Annals of Mathematical Statistics},
+number = {3},
+publisher = {Institute of Mathematical Statistics},
+pages = {400 -- 407},
+year = {1951},
+doi = {10.1214/aoms/1177729586},
+URL = {https://doi.org/10.1214/aoms/1177729586}
+}
+
+@article{REIS201997,
+title = {Optimal Boolean lattice-based algorithms for the U-curve optimization problem},
+journal = {Information Sciences},
+volume = {471},
+pages = {97-114},
+year = {2019},
+issn = {0020-0255},
+doi = {https://doi.org/10.1016/j.ins.2018.08.060},
+url = {https://www.sciencedirect.com/science/article/pii/S0020025518306789},
+author = {Marcelo S. Reis and Gustavo Estrela and Carlos Eduardo Ferreira and Junior Barrera}
+}
+
+@misc{marcondes2021learning,
+      title={Learning the hypotheses space from data through a U-curve algorithm}, 
+      author={Diego Marcondes and Adilson Simonis and Junior Barrera},
+      year={2021},
+      eprint={2109.03866},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+
+@ARTICLE{NINA:03,
+  author={Hirata, Nina S. T.},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Multilevel Training of Binary Morphological Operators}, 
+  year={2009},
+  volume={31},
+  number={4},
+  pages={707-720},
+  doi={10.1109/TPAMI.2008.118}}
+
+@Article{BARRERA:05,
+AUTHOR = {Estrela, Gustavo and Gubitoso, Marco Dimas and Ferreira, Carlos Eduardo and Barrera, Junior and Reis, Marcelo S.},
+TITLE = {An Efficient, Parallelized Algorithm for Optimal Conditional Entropy-Based Feature Selection},
+JOURNAL = {Entropy},
+VOLUME = {22},
+YEAR = {2020},
+NUMBER = {4},
+ARTICLE-NUMBER = {492},
+URL = {https://www.mdpi.com/1099-4300/22/4/492},
+PubMedID = {33286261},
+ISSN = {1099-4300},
+DOI = {10.3390/e22040492}
+}
+
+@Article{GOL,
+ title       = {The fantastic combinations of John Conway's new solitaire game "life"},
+ author      = {Martin Gardner},
+ journal     = {Scientific American},
+ volume      = {223},
+ pages       = {120-123},
+ year        = {1970},
+ month       = oct,
+ url         = {https://www.scientificamerican.com/article/conways-game-of-life-no-bounds/}
+}
+
+@article{DIEGO:DMM,
+  title={Discrete morphological neural networks},
+  author={Marcondes, D. and Barrera, J.},
+  journal={arXiv preprint arXiv:2309.00588},
+  year={2023}
+}
+
+@article{DIEGO:USDMM,
+   title={An Algorithm to Train Unrestricted Sequential Discrete Morphological Neural Networks},
+   ISBN={9783031577932},
+   ISSN={1611-3349},
+   url={http://dx.doi.org/10.1007/978-3-031-57793-2_14},
+   DOI={10.1007/978-3-031-57793-2_14},
+   publisher={Springer Nature Switzerland},
+   author={Marcondes, Diego and Feldman, Mariana and Barrera, Junior},
+   year={2024}}
+
+
+@misc{wikipedia_mnist,
+  author = "{Wikipedia contributors}",
+  title = "{MNIST database}",
+  howpublished = {\url{https://en.wikipedia.org/wiki/MNIST_database}},
+  note = "Acessado em: 10-ago-2024"
+}
+
+@misc{JAX,
+  title   = "{JAX: Autograd and XLA}",
+  author      = {{Google Research, Brain Team}},
+  howpublished= {\url{https://jax.readthedocs.io/en/latest/index.html}},
+  year        = {2023},
+  note        = {Accessed: 2024-08-19}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

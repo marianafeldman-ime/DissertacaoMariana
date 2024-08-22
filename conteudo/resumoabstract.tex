@@ -1,0 +1,32 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+% As palavras-chave são obrigatórias, em português e em inglês, e devem ser
+% definidas antes do resumo/abstract. Acrescente quantas forem necessárias.
+\palavrachave{W-operador}
+\palavrachave{U-curve}
+\palavrachave{Espaço de Aprendizado}
+\palavrachave{Aprendizado de Máquina}
+
+%\keyword{W-operator}
+%\keyword{U-curve}
+%\keyword{Learning Space}
+
+
+
+% O resumo é obrigatório, em português e inglês. Estes comandos também
+% geram automaticamente a referência para o próprio documento, conforme
+% as normas sugeridas da USP.
+\resumo{Técnicas de Morfologia Matemática desempenham um papel fundamental no processamento de imagens digitais, especialmente por meio de operadores morfológicos. Entre eles, destacam-se os W-operadores, uma classe específica que realiza transformações em imagens binárias, localmente definidas em uma janela $W$ e invariantes por translação. Algumas classes de W-operadores podem ser representadas por uma composição de $n$ W-operadores, o que equivale a um W-operador localmente definido na janela dada pela soma de Minkowski das $n$ janelas. Esta classe de W-operadores, denominados W-operadores multicamadas, permite a representação de filtros morfológicos e outras classes de operadores nos contextos de transformação e classificação de imagens. É um caso especial das redes normais morfológicas discretas.
+
+A classe dos W-operadores multicamadas pode ser decomposta em subclasses, cada uma associada a uma sequência específica de janelas. O espaço dessas subclasses forma um subconjunto de um reticulado Booleano que, quando considerado como um Espaço de Aprendizado, permite o aprendizado de W-operadores multicamadas por meio da minimização de uma função de erro utilizando o algoritmo U-curve. Esse processo de otimização no espaço de aprendizado permite o aprendizado dos elementos estruturantes e das funções Booleanas características de cada W-operador, de maneira eficiente, sem a necessidade de uma busca exaustiva, explorando a estrutura do U-curve nas cadeias do Espaço de Aprendizado.
+
+Neste trabalho, desenvolvemos um algoritmo capaz de aprender W-operadores multicamadas para os contextos de transformação e classificação de imagens. Aplicamos esse algoritmo a problemas práticos, como o reconhecimento de bordas em imagens ruidosas, o aprendizado da função de transição do Conway's Game of Life, e a classificação de dígitos manuscritos na base MNIST. Para abordar esses problemas mais complexos, foi implementada uma otimização da busca no Espaço de Aprendizado, incluindo a exploração estocástica das cadeias e a vetorização dos dados em GPU. Evidenciamos características distintivas do método, como sua alta interpretabilidade, consistência lógica e transparência, com capacidade de aprendizado com pouquíssimas amostras de dados, que contrastam com muitos métodos modernos de aprendizado baseados em redes neurais. Embora o método apresente limitações inerentes à sua natureza combinatória, o objetivo deste trabalho foi encontrar uma solução em tempo hábil com erro aceitável e garantia de consistência lógica do operador estimado.}
+
+\abstract{
+Mathematical Morphology techniques play a fundamental role in digital image processing, especially through morphological operators. Among them, W-operators stand out, a specific class that performs transformations on binary images, locally defined within a window $W$ and translation-invariant. Some classes of W-operators can be represented by a composition of $n$ W-operators, which is equivalent to a W-operator locally defined within the window given by the Minkowski sum of the $n$ windows. This class of W-operators, called multilayer W-operators, allows the representation of morphological filters and other classes of operators in the contexts of image transformation and classification. It is a special case of discrete normal morphological networks.
+
+The class of multilayer W-operators can be decomposed into subclasses, each associated with a specific sequence of windows. The space of these subclasses forms a subset of a Boolean lattice that, when considered as a Learning Space, enables the learning of multilayer W-operators by minimizing an error function using the U-curve algorithm. This optimization process in the learning space allows the learning of the structuring elements and the Boolean functions characteristic of each W-operator efficiently, without the need for exhaustive search, exploiting the U-curve structure in the chains of the Learning Space.
+
+In this work, we developed an algorithm capable of learning multilayer W-operators for the contexts of image transformation and classification. We applied this algorithm to practical problems such as edge recognition in noisy images, learning the transition function of Conway's Game of Life, and classifying handwritten digits in the MNIST database. To address these more complex problems, an optimization of the search in the Learning Space was implemented, including stochastic exploration of the chains and data vectorization on the GPU. We highlight distinctive characteristics of the method, such as its high interpretability, logical consistency, and transparency, with the ability to learn with very few data samples, which contrast with many modern learning methods based on neural networks. Although the method has limitations inherent to its combinatorial nature, the goal of this work was to find a solution in a timely manner with acceptable error and guarantee the logical consistency of the estimated operator.}

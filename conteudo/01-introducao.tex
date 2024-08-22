@@ -1,0 +1,50 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+%% ------------------------------------------------------------------------- %%
+
+% "\chapter" cria um capítulo com número e o coloca no sumário; "\chapter*"
+% cria um capítulo sem número e não o coloca no sumário. A introdução não
+% deve ser numerada, mas deve aparecer no sumário. Por conta disso, este
+% modelo define o comando "\unnumberedchapter".
+%\unnumberedchapter{Introdução}
+\chapter{Introdução}
+\label{cap:introducao}
+
+\enlargethispage{.5\baselineskip}
+%\section{Contexto Teórico}
+
+A área de pesquisa denominada \emph{Processamento de Imagens Digitais} (PID) está cada vez mais difundida e inserida no nosso dia-a-dia com o avanço da tecnologia e processamento computacional. São diversas as aplicações, como compressão de imagens, filtragem de imagens ruidosas, auxilio no diagnóstico médico, previsão de tempo, entre outras.
+
+A \emph{Morfologia Matemática} (MM) é uma técnica bastante utilizada para PID para mapeamentos entre imagens binárias (caracterizadas pelas cores preto e branco) através dos chamados \emph{operadores morfológicos} \cite{NINA:02}, e é estudada desde a década de sessenta, quando George Matheron e Jean Serra lideravam um grupo de estudos na \textit{École Nationale Superiéure des Mines de Paris} \cite{NINA:01}. W-operadores são uma classe específica de operadores morfológicos que realizam, em imagens binárias, transformações localmente definidas em uma janela W e invariantes por translação. Esta é a classe de operadores que será considerada neste estudo.
+
+Nos anos 90, Junior Barrera, com a colaboração de  Edward R. Dougherty e Nina S. Tomita, entre outros, introduziram uma linha de pesquisa que consiste em estimar de forma automática operadores morfológicos ótimos através de técnicas de \textit{Machine Learning} baseadas em indução \cite{BARRERA:01}. Essas técnicas consistem na utilização de uma coleção de pares de imagens - \textit{imagens de entrada} (a ser processada) e \textit{imagem ideal} (desejada como o resultado do processamento) - para realizar a estimação ou aprendizado de operadores. O operador resultante pode ser considerado como ótimo quando possui o menor erro entre todos os operadores considerados, sendo o erro geralmente calculado como erro absoluto médio (MAE) \cite{NINA:02}.
+
+Dentre as técnicas utilizadas, destaca-se o algoritmo de aprendizado eficiente chamado ISI (\textit{Incremental Splitting of Intervals}), apresentado por Nina S. Tomita em \cite{NINA:01} e aprimorado em  \cite{NINA:02}. Este algoritmo também pode ser utilizado para encontrar uma representação minimal de funções Booleanas por coleções de intervalos maximais e, uma vez que operadores normalmente admitem múltiplas representações, encontrar a estrutura de composição computacionalmente mais eficiente é importantíssimo.
+
+Também em \cite{NINA:02}, Nina apresenta um método para o projeto de W-operadores multicamadas, que são definidos pela composição de $n$ W-operadores com janelas $\{W_{1},W_{2},\dots,W_{n}\}, n \geq 2$. A composição em si é um W-operador, localmente definido na janela W dada pela soma de Minkowski $W = W_{1} \oplus	W_{2} \oplus \dots \oplus W_{n}$ \cite{Barrera1996}. O projeto de um W-operador com janela W como a composição de W-operadores com janelas menores, também chamado de projeto \textit{multi-estágio}, consiste em projetar, com menor custo computacional, operadores sobre janelas grandes pela composição de operadores sobre janelas menores, projetados de forma iterativa, onde um operador é projetado a partir do resultado do anterior de forma sequencial, ou seja, cada componente corresponde a um estágio do projeto. O processo iterativo neste caso se repete até que o decréscimo de erro entre os estágios seja desprezível. Observe que nesse método, cada W-operador da sequência é projetado após a estimação dos W-operadores anteriores. Mais detalhes desse método podem ser encontrados em \cite{NINA:02}.
+
+Ainda, ******* \textbf{Paragrafo sobre redes neurais morfológicas discretas} ******
+
+Por fim, desenvolvimentos recentes começam a envolver a noção de \emph{Espaço de Aprendizado} ou \textit{Learning Space} (LS), que são coleções de classes de operadores que possuem uma estrutura de reticulado. Essa estrutura permite o percorrimento e seleção de uma classe de operadores (modelo) de forma não exaustiva. No contexto de W-operadores multicamadas, é possível decompor a classe dos W-operadores multicamadas nas sub-classes dos operadores com cada sequência de janelas $\{W_{1},\dots,W_{n}\}$. Essa coleção de subclasses tem a estrutura de reticulado Booleano. Explorando o fenômeno U-curve nas cadeias desse reticulado, a otimização permite aprender os elementos estruturantes $\{W_{1},\dots,W_{n}\}$ e as funções Booleanas características de cada W-operador pela minimização do erro estimado, de forma não exaustiva no LS. Diferentemente do método de aprendizado proposto em \cite{NINA:02}, os elementos estruturantes e funções características de todos os W-operadores são estimados conjuntamente, e não em sequência, de forma que o método proposto é uma extensão de \cite{NINA:02}. Esse aprendizado no LS é um algoritmo para o treinamento da rede neural morfológica correspondente, i.e., sequencial e irrestrita.
+
+\section{Motivação}
+\label{sec:motiv}
+
+A decomposição da classe de W-operadores multicamadas em um LS possibilita o aprendizado simultâneo das janelas e funções características de todos os W-operadores da sequência, trazendo avanços para a teoria de aprendizado da composição de W-operadores e de reder neurais morfológicas discretas. Além disso, as hipóteses representadas por W-operadores multicamadas são interpretáveis e possuem consistência lógica, diferentemente de vários métodos modernos de aprendizado baseados em redes neurais. A interpretação é consequência das propriedades de cada W-operador da sequência que podem ser inferidas a partir dos elementos estruturantes e funções características.
+
+\section{Objetivos}
+\label{sec:obj}
+
+ O objetivo deste trabalho é implementar um algoritmo U-curve que percorre um Learning Space Booleano para realizar o aprendizado de W-operadores multicamadas, para a filtragem e classificação de imagens binárias. O algoritmo desenvolvido baseou-se no proposto por \cite{DIEGO:01}, incorporando características de paralelismo em GPU e exploração estocástica das cadeias do reticulado Booleano. O algorítimo foi aplicado para a transformação e filtragem de imagens binárias, para o aprendizado da função de transição do \textit{Conway's Game of Life} \cite{GOL} e para classificação dos dígitos do MNIST dataset \cite{MNIST:dataset}.
+
+\section{Resultados}
+
+Os resultados obtidos foram satisfatórios nas 3 aplicações propostas, evidenciamos características distintivas do método, como sua alta interpretabilidade, consistência lógica e transparência, com capacidade de aprendizado com pouquíssimas amostras de dados, que contrastam com muitos métodos modernos de aprendizado baseados em redes neurais. Embora o método apresente limitações inerentes à sua natureza combinatória, o objetivo deste foi alcançado ao encontrar uma solução em tempo hábil com erro aceitável e garantia de consistência lógica do operador estimado.
+
+Dois artigos resultaram deste trabalho: o primeiro foi submetido em \cite{DIEGO:USDMM}, enquanto o segundo está em fase de submissão simultaneamente à conclusão desta dissertação.
+
+\section{Organização do trabalho}
+
+O texto dessa dissertação está organizado da seguinte forma. No Capítulo 2, apresentamos os fundamentos teóricos e a base da MM, W-operadores e LS. No Capítulo 3, explanamos o problema de pesquisa. Em seguida, no Capítulo 4, definimos o modelo de aprendizado. No capítulo 5, é apresentado os resultados dos experimentais do algoritmo nos diversos cenários propostos. Por fim, no Capítulo 6, apresentamos as conclusões deste trabalho e discutimos possíveis extensões da metodologia apresentada.
